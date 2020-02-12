@@ -1,6 +1,6 @@
 library(babynames)
 library(tidyverse)
-library(rjson)
+library(jsonlite)
 
 names <- babynames
 applicants <- applicants
@@ -30,6 +30,22 @@ namesGroupedF <- group_by(names, name, sex) %>%
 
 namesGrouped <- group_by(names, name, sex) %>%
   nest()
+
+femaleNames <- namesGrouped %>%
+  filter(sex == 'F') %>%
+  ungroup() %>%
+  select(name) %>%
+  pull(name)
+
+maleNames <- namesGrouped %>%
+  filter(sex == 'M') %>%
+  ungroup() %>%
+  select(name) %>%
+  pull(name)
+
+write_json(maleNames, './maleNames.json')
+
+
 
 write_csv(namesGrouped, './babynames.csv')
 
