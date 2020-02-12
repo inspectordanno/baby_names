@@ -1,24 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';
 // import AppRouter from './routers/AppRouter';
-// import configureStore from './store/configureStore';
+import configureStore from './store/configureStore';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
+import BabyNameApp from './components/BabyNameApp';
 
 const store = configureStore();
 
-///redux
-// const jsx = (
-//   <Provider store={store}>
-//     <AppRouter />
-//   </Provider>
-// );
-
 const jsx = (
-  <h1>
-    js mounted
-  </h1>
+  <Provider store={store}>
+    <BabyNameApp />
+  </Provider>
 );
 
 ReactDOM.render(jsx, document.getElementById('app'));
