@@ -6,7 +6,7 @@ import LineChart from './LineChart';
 const BabyNameApp = () => {
   
   return (
-    <div>
+    <div className="BabyNameApp">
       <SexSelect />
       <NameSelect />
       <LineChart />
