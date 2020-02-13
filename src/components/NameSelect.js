@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button';
 import { setName } from '../actions/actions';
 import namesList from '../../r/namesList.json';
 
-
 const NameSelect = () => {
 
   const dispatch = useDispatch();

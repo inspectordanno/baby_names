@@ -4,11 +4,13 @@ import NameSelect from './NameSelect';
 import LineChart from './LineChart';
 
 const BabyNameApp = () => {
+
+  const name = useSelector(state => state.name);
   
   return (
     <div className="BabyNameApp">
       <NameSelect />
-      <LineChart />
+      <LineChart name={name} />
     </div>
   );
 }
