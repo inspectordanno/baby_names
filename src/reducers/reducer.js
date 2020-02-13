@@ -1,5 +1,5 @@
 const reducerDefaultState = {
-  name: 'Mary'
+  name: 'Taylor'
 }
 
 export default (state = reducerDefaultState, action) => {

@@ -57,8 +57,9 @@ const LineChart = ({ name }) => {
         .y(d => yScale(d.prop));
 
 
+       //creates / updates the line 
       const drawLine = (container, data, color) => {
-        //create / update the line
+        
         const line = d3.select(container.current)
           .datum(data)
 
