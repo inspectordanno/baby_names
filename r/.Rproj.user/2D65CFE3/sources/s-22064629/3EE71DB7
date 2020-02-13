@@ -12,16 +12,16 @@
     "path" : null,
     "project_path" : null,
     "properties" : {
-        "cacheKey" : "25DB23F6",
+        "cacheKey" : "28375F02",
         "caption" : "namesGrouped",
-        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=namesGrouped&cache_key=25DB23F6",
-        "displayedObservations" : 40927,
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=namesGrouped&cache_key=28375F02",
+        "displayedObservations" : "97310",
         "environment" : "",
         "expression" : "namesGrouped",
         "object" : "namesGrouped",
-        "preview" : 0,
-        "totalObservations" : 40927,
-        "variables" : 3
+        "preview" : "0",
+        "totalObservations" : "97310",
+        "variables" : "2"
     },
     "read_only" : false,
     "read_only_alternatives" : [

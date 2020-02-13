@@ -26,7 +26,11 @@ namePlot('Heather', 'F')
 namesGrouped <- group_by(names, name) %>%
   nest()
 
+namesList <- namesGrouped %>%
+  pull(name)
+
 write_json(namesGrouped, './names.json')
+write_json(namesList, './namesList.json')
 
 dataPulled <- pull(namesGroupedF, data)
 map2(dataPulled, i)

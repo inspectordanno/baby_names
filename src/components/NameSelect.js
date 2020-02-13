@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { FormGroup } from '@material-ui/core';
 import startCase from 'lodash/startCase';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import femaleNames from '../../r/femaleNames.json';
-import maleNames from '../../r/maleNames.json';
+
 import { setName } from '../actions/actions';
+import namesList from '../../r/namesList.json';
 
 
 const NameSelect = () => {
@@ -14,10 +13,18 @@ const NameSelect = () => {
   const dispatch = useDispatch();
   const [text, setText] = useState('');
 
+  //makes first letter capitalized and all other letters lowercase
+  const titleCase = (str) => {
+    return startCase(str.toLowerCase());
+  }
+
   //this checks if what is typed in the name input is in the array of names
   const doesNameExist = (name) => {
     //makes first letter of name capitalized, all other letters lowercase
-    name = startCase(name.toLowerCase());
+    name = titleCase(name);
+
+    //returns true if name is in list of names
+    return namesList.includes(name);
 
   };
 
@@ -28,8 +35,10 @@ const NameSelect = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     if (doesNameExist(text)) {
-      //if name exists, send name to store
-      dispatch(setName(text));
+      //if name exists, titleCase name and send to store
+      dispatch(setName(
+        titleCase(text)
+      ));
 
       //if name doesn't exist, prompt for another name
     } else if (!doesNameExist(text)) {
