@@ -4,7 +4,8 @@ import * as d3 from 'd3';
 const LineChart = ({ name }) => {
 
   const [nameData, setNameData] = useState();
-  const lineContainer = useRef();
+  const lineContainerFemale = useRef();
+  const lineContainerMale = useRef();
   const xAxisContainer = useRef();
   const yAxisContainer = useRef();
 
@@ -30,7 +31,7 @@ const LineChart = ({ name }) => {
   useEffect(() => {
     //d3 code goes in here
 
-    if (nameData && lineContainer.current && xAxisContainer.current && yAxisContainer.current) {
+    if (nameData) {
 
       const years = nameData.map(d => d.year);
       const proportions = nameData.map(d => d.prop);
@@ -56,32 +57,37 @@ const LineChart = ({ name }) => {
         .y(d => yScale(d.prop));
 
 
-      //create / update the line
-      const line = d3.select(lineContainer.current)
-        .datum(femaleBirths)
+      const drawLine = (container, data, color) => {
+        //create / update the line
+        const line = d3.select(container.current)
+          .datum(data)
 
-      line
-        .transition()
-        .duration(300)
-        .attr('d', lineGenerator)
-        .attr('fill', 'none')
-        .attr('stroke', 'steelblue')
-        .attr('stroke-width', 2.5)
+        line
+          .transition()
+          .duration(300)
+          .attr('d', lineGenerator)
+          .attr('fill', 'none')
+          .attr('stroke', color)
+          .attr('stroke-width', 2.5)
 
-      //create / update the x axis
-      d3.select(xAxisContainer.current)
-        .transition()
-        .duration(500)
-        .call(xAxis)
+        //create / update the x axis
+        d3.select(xAxisContainer.current)
+          .transition()
+          .duration(500)
+          .call(xAxis)
 
-      //create / update the y axis
-      d3.select(yAxisContainer.current)
-        .transition()
-        .duration(500)
-        .call(yAxis);
-    }
+        //create / update the y axis
+        d3.select(yAxisContainer.current)
+          .transition()
+          .duration(500)
+          .call(yAxis);
+       }
 
-  }, [nameData, xAxisContainer.current, yAxisContainer.current, lineContainer.current])
+       drawLine(lineContainerFemale, femaleBirths, 'orange');
+       drawLine(lineContainerMale, maleBirths, 'green');
+    }  
+
+  }, [nameData])
 
   return (
     <svg
@@ -91,7 +97,8 @@ const LineChart = ({ name }) => {
       <g ref={xAxisContainer} transform={`translate(${margin.left}, ${height - margin.bottom})`} />
       <g ref={yAxisContainer} transform={`translate(${margin.left}, ${margin.top})`} />
       <g transform={`translate(${margin.left}, ${margin.top})`}>
-        <path ref={lineContainer} />
+        <path ref={lineContainerFemale} />
+        <path ref={lineContainerMale} />
       </g>
     </svg>
   );
