@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1581568516592.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3EE71DB7",
+    "lastKnownWriteTime" : 4311212284,
+    "last_content_update" : 1581568516592,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "25DB23F6",
+        "caption" : "namesGrouped",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=namesGrouped&cache_key=25DB23F6",
+        "displayedObservations" : 40927,
+        "environment" : "",
+        "expression" : "namesGrouped",
+        "object" : "namesGrouped",
+        "preview" : 0,
+        "totalObservations" : 40927,
+        "variables" : 3
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

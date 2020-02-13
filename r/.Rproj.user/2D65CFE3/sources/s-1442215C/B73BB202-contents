@@ -1,6 +1,6 @@
 library(babynames)
 library(tidyverse)
-library(rjson)
+library(jsonlite)
 
 names <- babynames
 applicants <- applicants
@@ -21,23 +21,12 @@ namePlot('Richard', 'M')
 namePlot('Daniel', 'M')
 namePlot('John', 'M')
 namePlot('Heather', 'F')
-
 ##for each name by gender, calculate the minimum and maxium prop, then find the range. finally, sort them by the range
 
-namesGroupedF <- group_by(names, name, sex) %>%
-  nest() %>%
-  filter(sex == 'F')
-
-namesGrouped <- group_by(names, name, sex) %>%
+namesGrouped <- group_by(names, name) %>%
   nest()
 
-write_csv(namesGrouped, './babynames.csv')
-
-json <- rjson::toJSON(namesGrouped)
-json2 <- jsonlite::toJSON(namesGrouped)
-
-write(json2, './babynames.json')
-
+write_json(namesGrouped, './names.json')
 
 dataPulled <- pull(namesGroupedF, data)
 map2(dataPulled, i)

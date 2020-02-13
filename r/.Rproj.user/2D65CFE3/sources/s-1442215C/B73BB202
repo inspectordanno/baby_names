@@ -2,18 +2,18 @@
     "collab_server" : "",
     "contents" : "",
     "created" : 1581476811075.000,
-    "dirty" : true,
+    "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
     "hash" : "0",
     "id" : "B73BB202",
-    "lastKnownWriteTime" : 1581477495,
-    "last_content_update" : 1581479429080,
+    "lastKnownWriteTime" : 1581568515,
+    "last_content_update" : 1581568515,
     "path" : "~/Documents/GitHub/baby_names/r/babynames.R",
     "project_path" : "babynames.R",
     "properties" : {
-        "cursorPosition" : "27,12",
-        "scrollLine" : "26"
+        "cursorPosition" : "33,0",
+        "scrollLine" : "19"
     },
     "read_only" : false,
     "read_only_alternatives" : [

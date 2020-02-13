@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1581565369696.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "89819DBA",
+    "lastKnownWriteTime" : 4483166460,
+    "last_content_update" : 1581565369696,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "4984BF26",
+        "caption" : "namesGroupedM",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=namesGroupedM&cache_key=4984BF26",
+        "displayedObservations" : 40927,
+        "environment" : "",
+        "expression" : "namesGroupedM",
+        "object" : "namesGroupedM",
+        "preview" : 0,
+        "totalObservations" : 40927,
+        "variables" : 3
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
