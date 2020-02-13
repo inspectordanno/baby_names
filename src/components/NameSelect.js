@@ -10,7 +10,7 @@ import namesList from '../../r/namesList.json';
 const NameSelect = () => {
 
   const dispatch = useDispatch();
-  const [text, setText] = useState('');
+  const [text, setText] = useState('Mary');
 
   //makes first letter capitalized and all other letters lowercase
   const titleCase = (str) => {

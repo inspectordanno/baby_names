@@ -58,8 +58,8 @@ const LineChart = ({ name }) => {
 
       //create / update the line
       const line = d3.select(lineContainer.current)
-        .data(femaleBirths)
-  
+        .datum(femaleBirths)
+
       line
         .transition()
         .duration(300)
@@ -90,7 +90,7 @@ const LineChart = ({ name }) => {
     >
       <g ref={xAxisContainer} transform={`translate(${margin.left}, ${height - margin.bottom})`} />
       <g ref={yAxisContainer} transform={`translate(${margin.left}, ${margin.top})`} />
-      <g ref={lineContainer}  transform={`translate(${margin.left}, ${margin.top})`}>
+      <g transform={`translate(${margin.left}, ${margin.top})`}>
         <path ref={lineContainer} />
       </g>
     </svg>
