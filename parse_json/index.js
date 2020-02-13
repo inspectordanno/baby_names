@@ -1,10 +1,10 @@
 const fs = require('fs');
 
-const rawData = fs.readFileSync('../r/babynames.json');
+const rawData = fs.readFileSync('../r/names.json');
 
 const json = JSON.parse(rawData);
 
 json.forEach((obj) => {
   const stringifiedJson = JSON.stringify(obj.data);
-  fs.writeFileSync(`./${obj.sex}/${obj.name}.json`, stringifiedJson);
+  fs.writeFileSync(`./names/${obj.name}.json`, stringifiedJson);
 })
