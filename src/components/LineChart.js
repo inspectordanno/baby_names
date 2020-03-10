@@ -9,10 +9,10 @@ const LineChart = ({ name }) => {
   const xAxisContainer = useRef();
   const yAxisContainer = useRef();
 
-  const margin = {top: 20, right: 10, bottom: 20, left: 10};
+  const margin = {top: 20, right: 30, bottom: 30, left: 40};
 
-  const width = 800 - margin.left - margin.right;
-  const height = 600  - margin.top - margin.bottom;
+  const width = 900;
+  const height = 500;
 
   useEffect(() => {
     //I could just import the file locally, but I want to simulate an api call
@@ -33,29 +33,42 @@ const LineChart = ({ name }) => {
 
     if (nameData) {
 
-      const years = nameData.map(d => d.year);
+      //const years = nameData.map(d => d.year)
+      const years = d3.range(1880, 2021) //generates years from 1880 to 2020 for the x-axis
       const proportions = nameData.map(d => d.prop);
       const maleBirths = nameData.filter(birth => birth.sex === 'M');
+      console.log(maleBirths);
       const femaleBirths = nameData.filter(birth => birth.sex === 'F');
+      console.log(femaleBirths);
 
       const xScale = d3.scaleLinear() //can do a time scale but making this simple
         .domain(d3.extent(years)) //calculates min and max
-        .range([0, width]);
+        .range([margin.left, width - margin.right]); //range of inner dimensions of chart
 
       const yScale = d3.scaleLinear()
         .domain([0, d3.max(proportions)])
-        .range([height, 0]);
+        .range([height - margin.bottom, margin.top]);
 
       const xAxis = d3.axisBottom()
-        .scale(xScale);
+        .scale(xScale)
+        .tickFormat(d3.format(""));
+
+      const determineYAxisFormat = (proportions) => {
+        if (d3.max(proportions) < 0.001) {
+          return ""
+        } else if (d3.max(proportions) >= 0.001) {
+          ",.1%";
+        }
+      }
         
-      const yAxis = d3.axisRight()
-        .scale(yScale);
+      const yAxis = d3.axisLeft()
+        .scale(yScale)
+        .tickFormat(d3.format(",.1%"))
+        // .tickSizeOuter(0)
 
       const lineGenerator = d3.line()
         .x(d => xScale(d.year))
         .y(d => yScale(d.prop));
-
 
        //creates / updates the line 
       const drawLine = (container, data, color) => {
@@ -88,16 +101,16 @@ const LineChart = ({ name }) => {
        drawLine(lineContainerMale, maleBirths, 'green');
     }  
 
-  }, [nameData])
+  }, [nameData])  
 
   return (
     <svg
       width={width}
       height={height}
     >
-      <g ref={xAxisContainer} transform={`translate(${margin.left}, ${height - margin.bottom})`} />
-      <g ref={yAxisContainer} transform={`translate(${margin.left}, ${margin.top})`} />
-      <g transform={`translate(${margin.left}, ${margin.top})`}>
+      <g ref={xAxisContainer} transform={`translate(0, ${height - margin.bottom})`} />
+      <g ref={yAxisContainer} transform={`translate(${margin.left}, 0)`} />
+      <g>
         <path ref={lineContainerFemale} />
         <path ref={lineContainerMale} />
       </g>
