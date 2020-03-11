@@ -53,18 +53,20 @@ const LineChart = ({ name }) => {
         .scale(xScale)
         .tickFormat(d3.format(""));
 
+      // if the maxiumum proportion is above .001 of the population, use percentage notation
+      // if it is below .001 of the population, use scientific notation
       const determineYAxisFormat = (proportions) => {
         if (d3.max(proportions) < 0.001) {
-          return ""
+          return d3.format(".0e");
         } else if (d3.max(proportions) >= 0.001) {
-          ",.1%";
+          return d3.format(",.1%");
         }
       }
         
       const yAxis = d3.axisLeft()
         .scale(yScale)
-        .tickFormat(d3.format(",.1%"))
-        // .tickSizeOuter(0)
+        .tickFormat(determineYAxisFormat(proportions))
+        .tickSizeOuter(0)
 
       const lineGenerator = d3.line()
         .x(d => xScale(d.year))
